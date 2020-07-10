@@ -14,8 +14,10 @@ pipeline {
 				ENV='.env'
 			}
 			steps {
-				sh 'cat ${ENV}'
-				echo "Version file: ${ENV}"
+				sh 'ELK_VERSION=$(grep ELK_VERSION ${ENV} | awk -F "=" '{print $2}')'
+				sh 'echo ${ELK_VERSION}'
+				echo "Version: ${ELK_VERSION}"
+
 			}
 		}
 
