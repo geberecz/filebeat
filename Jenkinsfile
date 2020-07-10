@@ -14,7 +14,8 @@ pipeline {
 				ENV='.env'
 			}
 			steps {
-				echo "Version: ${ENV}"
+				sh 'cat ${ENV}'
+				echo "Version file: ${ENV}"
 			}
 		}
 
