@@ -25,7 +25,7 @@ pipeline {
 				
 				sh 'sed -i -E "s/(filebeat-oss:+)([0-9].*)/filebeat-oss:$ELK_VERSION/g" ${DIRECTORY}/filebeat-context/Dockerfile'
 	            sh 'cat ${DIRECTORY}/filebeat-context/Dockerfile'
-	           	sh 'echo "a b c" | grep a'
+	           	sh 'echo "a b c" | awk {\'print $2\'}'
 	            
 			}
 		}
