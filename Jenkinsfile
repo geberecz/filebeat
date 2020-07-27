@@ -1,3 +1,5 @@
+def ELK_VERSION
+
 pipeline {
     
     agent any
@@ -14,7 +16,7 @@ pipeline {
 				ELK_VERSION = sh 'cat test/parameters'
 			}
 			steps {
-				echo "ELK version is: ${env.ELK_VERSION}"
+				echo "ELK version is: ${ELK_VERSION}"
 
 			}
 		}
