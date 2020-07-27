@@ -17,9 +17,7 @@ pipeline {
 			}
 			steps {
 				// sh 'ELK_VERSION=$(cat test/parameters | grep ELK_VERSION | awk -F "=" '{print $2}')'
-				sh """#!/bin/sh
-					ELK_VERSION=$(cat test/parameters | grep ELK_VERSION | awk '{print $1}')
-					"""
+				sh 'echo "a b c" | awk '{print $2}' '
 	
 			}
 		}
