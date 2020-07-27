@@ -27,6 +27,10 @@ pipeline {
 	            sh 'cat ${DIRECTORY}/filebeat-context/Dockerfile'
 	           	sh 'echo "a b c" | awk {\'print $2\'}'
 	           	sh 'echo "a b c" | awk \'{print $3}\''
+	           	script {
+	           		A="a b c"
+	           		echo ${A} | awk \'{print $2}\'	 
+	           	}
 	            
 			}
 		}
