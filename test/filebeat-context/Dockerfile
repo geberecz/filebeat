@@ -1,4 +1,4 @@
-FROM docker.elastic.co/beats/filebeat-oss:7.7.0
+FROM docker.elastic.co/beats/filebeat-oss:latest
 COPY config/filebeat.docker.yml /usr/share/filebeat/filebeat.yml
 COPY certs /etc/filebeat/certs
 USER root
