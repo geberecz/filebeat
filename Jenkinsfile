@@ -23,8 +23,8 @@ pipeline {
 			
 			steps {
 				
-				sh 'sed -i -E "s/(filebeat-oss:+)([0-9].*)/filebeat-oss:$ELK_VERSION/g" test/filebeat-context/Dockerfile'
-	            sh 'cat test/filebeat-context/Dockerfile'
+				sh 'sed -i -E "s/(filebeat-oss:+)([0-9].*)/filebeat-oss:$ELK_VERSION/g" ${DIRECTORY}/filebeat-context/Dockerfile'
+	            sh 'cat ${DIRECTORY}/filebeat-context/Dockerfile'
 			}
 		}
 
