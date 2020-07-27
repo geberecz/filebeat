@@ -1,7 +1,4 @@
 
-
-def V
-
 pipeline {
     
     agent any
@@ -25,7 +22,7 @@ pipeline {
 			
 			steps {
 		
-				V = sh 'grep ELK_VERSION test/parameters | awk -F "=" {\'print $2\'}'
+				V = "sh 'grep ELK_VERSION test/parameters | awk -F \"=\" {\'print $2\'}'"
 
 				sh 'sed -i -E "s/(filebeat-oss:+)([0-9].*)/filebeat-oss:$ELK_VERSION/g" ${DIRECTORY}/filebeat-context/Dockerfile'
 	            sh 'cat ${DIRECTORY}/filebeat-context/Dockerfile'
