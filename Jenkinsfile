@@ -16,10 +16,14 @@ pipeline {
 			
 			when { expression { BRANCH_NAME == "develop" && params.ACTION == "Create new image for filebeat" }}
 		
+			environment {
+
+				DIRECTORY = "test"
+			}
 			
 			steps {
 				
-				echo "ELK version: ${params.ELK_VERSION}"
+				echo "ELK version: ${ELK_VERSION}"
 	
 			}
 		}
