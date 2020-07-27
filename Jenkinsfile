@@ -22,7 +22,7 @@ pipeline {
 			
 			steps {
 		
-				V = "sh 'grep ELK_VERSION test/parameters | awk -F \"=\" {\'print ${2}\'}'"
+				sh 'ELK_VERSION=$(grep ELK_VERSION test/parameters | awk -F "=" {\'print $2\'}); echo ${ELK_VERSION}'
 
 				sh 'sed -i -E "s/(filebeat-oss:+)([0-9].*)/filebeat-oss:$ELK_VERSION/g" ${DIRECTORY}/filebeat-context/Dockerfile'
 	            sh 'cat ${DIRECTORY}/filebeat-context/Dockerfile'
