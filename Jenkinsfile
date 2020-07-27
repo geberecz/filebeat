@@ -19,7 +19,7 @@ pipeline {
 			
 			steps {
 				
-				echo "ELK version: params.ELK_VERSION"
+				echo "ELK version: ${params.ELK_VERSION}"
 	
 			}
 		}
