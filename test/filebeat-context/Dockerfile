@@ -1,4 +1,4 @@
-ARG ELK_VERSION
+ARG 7.7.0
 FROM docker.elastic.co/beats/filebeat-oss:${ELK_VERSION}
 COPY config/filebeat.docker.yml /usr/share/filebeat/filebeat.yml
 COPY certs /etc/filebeat/certs
