@@ -1,4 +1,4 @@
-def ELK_VERSION
+
 
 pipeline {
     
@@ -13,11 +13,11 @@ pipeline {
 		stage('Create filebeat image in TEST') {
 		
 			environment {
-				ELK_VERSION = sh 'cat test/parameters'
+				DIRECTORY = "test"
 			}
 			steps {
-				echo "ELK version is: ${ELK_VERSION}"
-
+				sh 'ELK_VERSION=$(cat ${DIRECTORY}/parameters | grep ELK_VERSION | awk -F "=" '{print $2}')"'
+				sh 'echo "ELK version: ${ELK_VERSION}"'
 			}
 		}
 
