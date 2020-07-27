@@ -6,7 +6,7 @@ pipeline {
     
 	parameters {
 		choice choices: ['Create new image for filebeat', 'Deploy filebeat to server'], description: 'What do you want to do?', name: 'ACTION'
-		string defaultValue: '7.7.0', description: 'Some text...', name: 'ELK_VERSION', trim: false
+		//string defaultValue: '7.7.0', description: 'Some text...', name: 'ELK_VERSION', trim: false
 		choice choices: ['awssand01', 'awssand02', 'awssand03'], description: 'Choose from servers', name: 'SERVER'
 	}
 
@@ -22,15 +22,14 @@ pipeline {
 			}
 			
 			steps {
-				
+		
+				ELK_VERSION = sh 'grep ELK_VERSION test/parameters | awk -F \"=\" \'{print $2}\''
+
 				sh 'sed -i -E "s/(filebeat-oss:+)([0-9].*)/filebeat-oss:$ELK_VERSION/g" ${DIRECTORY}/filebeat-context/Dockerfile'
 	            sh 'cat ${DIRECTORY}/filebeat-context/Dockerfile'
 	           	sh 'echo "a b c" | awk {\'print $2\'}'
 	           	sh 'echo "a b c" | awk \'{print $3}\''
-	           	script {
-	           		A="a b c"
-	           		echo ${A} | awk \'{print $2}\'	 
-	           	}
+
 	            
 			}
 		}
