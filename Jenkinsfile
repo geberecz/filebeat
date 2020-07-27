@@ -8,16 +8,13 @@ pipeline {
 
 	stages {
 	
-		stage('Initialize') {
+		stage('Create filebeat image in TEST') {
 		
 			environment {
-				ENV='.env'
+				ELK_VERSION = sh 'cat test/parameters'
 			}
 			steps {
-				sh "echo aaaaaaaaa"
-				sh 'ELK_VERSION="$(grep ELK_VERSION ${ENV} | awk -F "=" '{print $2}')"'
-				sh "echo ${ELK_VERSION}"
-				echo "Version: ${ELK_VERSION}"
+				echo "ELK version is: ${env.ELK_VERSION}"
 
 			}
 		}
@@ -25,7 +22,7 @@ pipeline {
 
 	}
 
-
+	/*
 	post {
 		always {
 			echo "The overall result is: ${currentBuild.result}"
@@ -40,4 +37,6 @@ pipeline {
 			echo "It ended successfully..."
 		}
 	}
+	*/
+
 }
