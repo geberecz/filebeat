@@ -24,7 +24,7 @@ pipeline {
 			steps {
 				
 				echo "ELK version: ${params.ELK_VERSION}"
-				sh 'sed -i -E "s/(ARG +)([0-9].*)/\1${params.ELK_VERSION}/g" test/filebeat-context/Dockerfile'
+				//sh 'sed -i -E "s/(ARG +)([0-9].*)/\1${params.ELK_VERSION}/g" test/filebeat-context/Dockerfile'
 	            sh 'cat test/filebeat-context/Dockerfile'
 			}
 		}
