@@ -16,8 +16,9 @@ pipeline {
 				DIRECTORY = "test"
 			}
 			steps {
-				// sh 'ELK_VERSION=$(cat test/parameters | grep ELK_VERSION | awk -F "=" '{print $2}')'
-				sh "echo "a b c" | awk '{print ${2}}' "
+				def p = 'cat test/parameters'.execute()
+				p.waitFor()
+				println p.text
 	
 			}
 		}
