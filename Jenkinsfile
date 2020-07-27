@@ -5,20 +5,21 @@ pipeline {
     agent any
     
 	parameters {
-		choice choices: ['awssand01', 'awssand02', 'awssand03'], description: 'Choose from servers', name: 'Server'
+		choice choices: ['Create new image for filebeat', 'Deploy filebeat to server'], description: 'What do you want to do?', name: 'ACTION'
+		string defaultValue: '7.7.0', description: 'Some text...', name: 'ELK_VERSION', trim: false
+		choice choices: ['awssand01', 'awssand02', 'awssand03'], description: 'Choose from servers', name: 'SERVER'
 	}
 
 	stages {
 	
 		stage('Create filebeat image in TEST') {
+			
+			when { expression { BRANCH_NAME == "develop" && params.ACTION == "Create new image for filebeat" }}
 		
-			environment {
-				DIRECTORY = "test"
-			}
+			
 			steps {
-				def p = 'cat test/parameters'.execute()
-				p.waitFor()
-				println p.text
+				
+				echo "ELK version: params.ELK_VERSION"
 	
 			}
 		}
