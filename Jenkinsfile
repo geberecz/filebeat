@@ -16,8 +16,9 @@ pipeline {
 				DIRECTORY = "test"
 			}
 			steps {
-				sh 'ELK_VERSION=$(cat test/parameters | grep ELK_VERSION | awk -F "=" '{print $2}')'
-				sh 'echo "ELK version: ${ELK_VERSION}"'
+				// sh 'ELK_VERSION=$(cat test/parameters | grep ELK_VERSION | awk -F "=" '{print $2}')'
+				sh 'ELK_VERSION=$(cat test/parameters)'
+				//sh 'echo "ELK version: ${ELK_VERSION}"'
 			}
 		}
 
