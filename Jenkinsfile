@@ -25,8 +25,9 @@ pipeline {
 				sh 'ELK_VERSION=$(grep ELK_VERSION test/parameters | awk -F "=" {\'print $2\'}) && \
 				    sed -i -E "s/(filebeat-oss:+)(.*)/filebeat-oss:${ELK_VERSION}/g" ${DIRECTORY}/filebeat-context/Dockerfile'
 
-	            sh 'cat ${DIRECTORY}/filebeat-context/Dockerfile'
+	            sh 'grep ${ELK_VERSION} ${DIRECTORY}/filebeat-context/Dockerfile'
 	
+	            sh 'printenv'
 
 	            
 			}
